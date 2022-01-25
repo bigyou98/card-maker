@@ -1,9 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import css from "./login.module.css";
 
 const Login = () => {
+  const navigation = useNavigate();
+
   const click = (e) => {
     console.log(e.target.id);
+    navigation("/main");
   };
 
   return (
