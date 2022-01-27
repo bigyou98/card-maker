@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import css from "./main.module.css";
-import BusinessCard from "./profileBox copy/BusinessCard";
-import ProfileBox from "./profileBox/ProfileBox";
+import BusinessCard from "./businessCard/BusinessCard";
+import { ProfileBox, ProfileBoxTemplate } from "components/main/profileBox";
 
 const Main = () => {
   const [obj, setObj] = useState({
@@ -21,7 +21,8 @@ const Main = () => {
       <div className={css.wrapper}>
         <div className={css.halfWrapper}>
           <p className={css.title}>Card Maker</p>
-          <ProfileBox />
+          {/* <ProfileBox /> */}
+          <ProfileBoxTemplate />
         </div>
         <div className={css.halfWrapper}>
           <p className={css.title}>Card Preview</p>

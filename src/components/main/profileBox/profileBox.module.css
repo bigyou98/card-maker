@@ -1,5 +1,31 @@
+@value makerGrey from '../../../common/colors.css';
+@value makerGreen from '../../../common/colors.css';
+
 .profileBox {
-  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid makerLightGrey;
   width: 90%;
-  height: 200px;
+}
+
+.box {
+  display: flex;
+}
+
+.pros {
+  flex: 1;
+  outline: none;
+}
+
+.message {
+  height: 80px;
+}
+
+.btn1 {
+  background-color: makerLightGrey;
+  height: 30px;
+}
+.btn2 {
+  background-color: makerGreen;
+  height: 30px;
 }
