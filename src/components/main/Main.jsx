@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import css from "./main.module.css";
 import BusinessCard from "./businessCard/BusinessCard";
+import { useNavigate } from "react-router-dom";
+
 import { ProfileBox, ProfileBoxTemplate } from "components/main/profileBox";
 
 const Main = () => {
@@ -11,11 +13,19 @@ const Main = () => {
     email: "bigyou00@gmail.com",
     message: "현재는 한세대학교 학생입니다.",
   });
+  const navigation = useNavigate();
 
   return (
     <div className={css.layout}>
       <div className={css.header}>
-        <img src="images/logo.png" alt="로고" className={css.img} />
+        <img
+          src="images/logo.png"
+          alt="로고"
+          className={css.img}
+          onClick={() => {
+            navigation("/");
+          }}
+        />
         Business Card Maker
       </div>
       <div className={css.wrapper}>
