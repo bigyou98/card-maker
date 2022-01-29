@@ -1,30 +1,58 @@
 import React from "react";
 import css from "./profileBox.module.css";
 
-export const ProfileBox = () => {
+export const ProfileBox = ({ profile }) => {
+  const { name, company, theme, title, email, message, photo, id } = profile;
   return (
     <div className={css.profileBox}>
-      <div>
-        <input type="text" placeholder="Name" />
-        <input type="text" placeholder="Company" />
-        <select>
-          <option value="1" selected>
+      <div className={css.box}>
+        <input
+          className={css.pros}
+          type="text"
+          placeholder="Name"
+          value={name}
+        />
+        <input
+          className={css.pros}
+          type="text"
+          placeholder="Company"
+          value={company}
+        />
+        <select className={css.pros} value={theme}>
+          <option value="dark" selected>
             Dark
           </option>
-          <option value="2">Pink</option>
+          <option value="pink">Pink</option>
         </select>
       </div>
-      <input type="text" placeholder="Title" />
-      <input type="text" placeholder="Email" />
-      <input type="text" placeholder="Message" />
-      <select>
-        <option value="1" selected>
-          블랙
-        </option>
-        <option value="2">핑크</option>
-      </select>
-      <button>사진선택</button>
-      <button>추가하기</button>
+      <div className={css.box}>
+        <input
+          className={css.pros}
+          type="text"
+          placeholder="Title"
+          value={title}
+        />
+        <input
+          className={css.pros}
+          type="text"
+          placeholder="Email"
+          value={email}
+        />
+      </div>
+      <textarea
+        type="text"
+        placeholder="Message"
+        className={css.message}
+        value={message}
+      />
+      <div className={css.box}>
+        <input
+          type="file"
+          className={`${css.pros} ${css.btn1}`}
+          value={photo}
+        ></input>
+        <button className={`${css.pros} ${css.btn2}`}>추가하기</button>
+      </div>
     </div>
   );
 };

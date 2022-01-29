@@ -6,6 +6,7 @@
   flex-direction: column;
   border: 1px solid makerLightGrey;
   width: 90%;
+  margin-bottom: 40px;
 }
 
 .box {
@@ -15,10 +16,14 @@
 .pros {
   flex: 1;
   outline: none;
+  font-size: 1rem;
 }
 
 .message {
   height: 80px;
+  resize: none;
+  padding: 10px;
+  font-size: 1.1rem;
 }
 
 .btn1 {
