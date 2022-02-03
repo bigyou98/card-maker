@@ -12,7 +12,7 @@ const Main = () => {
     theme: "dark",
     title: "학생",
     email: "bigyou00@gmail.com",
-    message: "현재는 한세대학교 학생입니다.",
+    message: "'현재는 한세대학교 학생입니다.'",
     photo: "",
     id: "0",
   });
@@ -39,7 +39,8 @@ const Main = () => {
         </div>
         <div className={css.halfWrapper}>
           <p className={css.title}>Card Preview</p>
-          <BusinessCard />
+          <BusinessCard profile={profile} />
+          <BusinessCard profile={profile} />
         </div>
       </div>
     </div>

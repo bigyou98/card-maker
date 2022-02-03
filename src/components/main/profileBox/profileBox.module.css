@@ -1,5 +1,15 @@
 @value makerGrey from '../../../common/colors.css';
+@value makerLightGrey from '../../../common/colors.css';
 @value makerGreen from '../../../common/colors.css';
+@value makerPink from '../../../common/colors.css';
+
+@font-face {
+  font-family: "SUIT-Medium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
 
 .profileBox {
   display: flex;
@@ -13,10 +23,11 @@
   display: flex;
 }
 
-.pros {
+.flex1 {
   flex: 1;
   outline: none;
   font-size: 1rem;
+  font-family: SUIT-Medium;
 }
 
 .message {
@@ -24,13 +35,36 @@
   resize: none;
   padding: 10px;
   font-size: 1.1rem;
+  font-family: SUIT-Medium;
 }
 
 .btn1 {
-  background-color: makerLightGrey;
-  height: 30px;
+  display: none;
 }
 .btn2 {
   background-color: makerGreen;
   height: 30px;
+  cursor: pointer;
+}
+
+.label {
+  flex: 1;
+  outline: none;
+  font-size: 1rem;
+  font-family: SUIT-Medium;
+  cursor: pointer;
+  text-align: center;
+  background-color: makerLightGrey;
+  height: 30px;
+  border: 1px solid black;
+}
+
+.photo {
+  cursor: pointer;
+  text-align: center;
+  flex: 1;
+  outline: none;
+  font-size: 1rem;
+  font-family: SUIT-Medium;
+  background-color: makerPink;
 }

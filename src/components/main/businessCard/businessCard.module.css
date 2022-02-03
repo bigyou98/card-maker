@@ -1,5 +1,45 @@
+@value makerYellow from '../../../common/colors.css';
+
 .businessCard {
-  border: 1px solid black;
+  display: flex;
+  background-color: wheat;
+  border-radius: 20px;
   width: 90%;
-  height: 200px;
+  padding: 2rem 0;
+  margin-bottom: 10px;
+}
+
+.imgArea {
+  padding: 20px;
+  margin-right: 20px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.textArea {
+  flex: 3;
+  padding: 1.5rem;
+}
+
+.img {
+  width: 200px;
+}
+
+.name {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+.text {
+  font-size: 1.2rem;
+  margin: 0;
+  margin-top: 0.5rem;
+}
+.hr {
+  width: 100%;
+  height: 1px;
+  background-color: makerYellow;
+  border: none;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import css from "./profileBox.module.css";
 
 export const ProfileBoxTemplate = () => {
@@ -11,6 +11,11 @@ export const ProfileBoxTemplate = () => {
     message: "",
     photo: "",
   });
+  const ref = useRef();
+  let photoName = obj.photo
+    .replace("C:\\fakepath\\", "")
+    .replace(".jpg", "")
+    .replace(".png", "");
 
   const addProfile = () => {
     // 1. DB에 내용 저장하기
@@ -20,7 +25,7 @@ export const ProfileBoxTemplate = () => {
     <div className={css.profileBox}>
       <div className={css.box}>
         <input
-          className={css.pros}
+          className={css.flex1}
           type="text"
           placeholder="Name"
           value={obj.name}
@@ -31,7 +36,7 @@ export const ProfileBoxTemplate = () => {
           }}
         />
         <input
-          className={css.pros}
+          className={css.flex1}
           type="text"
           placeholder="Company"
           value={obj.company}
@@ -42,7 +47,7 @@ export const ProfileBoxTemplate = () => {
           }}
         />
         <select
-          className={css.pros}
+          className={css.flex1}
           value={obj.them}
           onChange={(e) => {
             setObj((cur) => {
@@ -50,15 +55,15 @@ export const ProfileBoxTemplate = () => {
             });
           }}
         >
-          <option value="dark" selected>
-            Dark
-          </option>
+          <option value="dark">Dark</option>
           <option value="pink">Pink</option>
+          <option value="white">White</option>
         </select>
       </div>
       <div className={css.box}>
         <input
-          className={css.pros}
+          ref={ref}
+          className={css.flex1}
           type="text"
           placeholder="Title"
           value={obj.title}
@@ -69,7 +74,7 @@ export const ProfileBoxTemplate = () => {
           }}
         />
         <input
-          className={css.pros}
+          className={css.flex1}
           type="text"
           placeholder="Email"
           value={obj.email}
@@ -92,9 +97,16 @@ export const ProfileBoxTemplate = () => {
         }}
       />
       <div className={css.box}>
+        <label
+          htmlFor="profilePhoto"
+          className={photoName === "" ? css.label : css.photo}
+        >
+          {photoName === "" ? "file 선택하기" : photoName}
+        </label>
         <input
           type="file"
-          className={`${css.pros} ${css.btn1}`}
+          id="profilePhoto"
+          className={`${css.flex1} ${css.btn1}`}
           value={obj.photo}
           onChange={(e) => {
             setObj((cur) => {
@@ -102,7 +114,7 @@ export const ProfileBoxTemplate = () => {
             });
           }}
         ></input>
-        <button className={`${css.pros} ${css.btn2}`} onClick={addProfile}>
+        <button className={`${css.flex1} ${css.btn2}`} onClick={addProfile}>
           추가하기
         </button>
       </div>

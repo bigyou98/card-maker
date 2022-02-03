@@ -1,14 +1,16 @@
 @value makerWhite from './common/colors.css';
 @font-face {
-  font-family: "KITA";
-  src: url("./fonts/KITA.ttf");
+  font-family: "-KITA-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/-KITA-Regular.woff")
+    format("woff");
   font-weight: normal;
   font-style: normal;
 }
-
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   background-color: makerWhite;
   font-family: KITA;
-  box-sizing: border-box;
 }
