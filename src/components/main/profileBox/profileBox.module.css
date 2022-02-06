@@ -31,7 +31,7 @@
 }
 
 .message {
-  height: 80px;
+  height: auto;
   resize: none;
   padding: 10px;
   font-size: 1.1rem;

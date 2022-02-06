@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import css from "./profileBox.module.css";
 
-export const ProfileBoxTemplate = () => {
+export const ProfileBoxTemplate = ({ writeUserData }) => {
   const [obj, setObj] = useState({
     name: "현재 이것은 템플릿임",
     company: "",
@@ -10,16 +10,35 @@ export const ProfileBoxTemplate = () => {
     email: "",
     message: "",
     photo: "",
+    userId: "",
   });
   const ref = useRef();
+
+  let userId = Date.now().toString();
+
   let photoName = obj.photo
     .replace("C:\\fakepath\\", "")
     .replace(".jpg", "")
     .replace(".png", "");
 
-  const addProfile = () => {
+  const addProfile = async () => {
     // 1. DB에 내용 저장하기
+    try {
+      await writeUserData(
+        userId,
+        obj.name,
+        obj.company,
+        obj.them,
+        obj.title,
+        obj.email,
+        obj.message,
+        obj.photo
+      );
+    } catch (e) {
+      console.log(e);
+    }
     // 2. obj 내용물 비우기
+    setObj({});
   };
   return (
     <div className={css.profileBox}>
