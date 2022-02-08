@@ -1,31 +1,31 @@
+import Footer from "components/footer/Footer";
+import Header from "components/header/Header";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import css from "./login.module.css";
 
-const Login = () => {
+const Login = ({ authService }) => {
   const navigation = useNavigate();
 
-  const googleLogoin = () => {};
-
-  const githubLogin = () => {};
-
-
+  const onLogin = (e) => {
+    authService.login(e.target.innerText);
+    navigation("/main");
+  };
 
   return (
     <div className={css.wrapper}>
       <div className={css.content}>
-        <img src="images/logo.png" alt="로고" className={css.img} />
-        <p className={css.title}>Business Card Maker</p>
+        <Header />
         <div className={css.whiteBack}>
           <p>Login</p>
-          <button className={css.button} onClick={googleLogoin} id="google">
+          <button className={css.button} onClick={onLogin}>
             Google
           </button>
-          <button className={css.button} onClick={githubLogin} id="github">
+          <button className={css.button} onClick={onLogin}>
             Github
           </button>
         </div>
-        <p>Dreams Come True</p>
+        <Footer />
       </div>
     </div>
   );

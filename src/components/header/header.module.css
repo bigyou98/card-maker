@@ -1,0 +1,37 @@
+@value makerBlack,makerWhite,makerGreen from '../../common/colors.css';
+
+/* 1. 배경 지정 */
+/* 크기 지정 */
+
+.title {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 0.5em;
+  color: makerWhite;
+}
+
+.logo {
+  width: 5em;
+  margin-top: 1em;
+}
+
+.header {
+  text-align: center;
+  position: relative;
+  width: 100%;
+  background-color: makerGreen;
+}
+
+.logout {
+  cursor: pointer;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  border-radius: 20%;
+  background-color: makerBlack;
+  color: makerWhite;
+  border: none;
+  outline: none;
+  padding: 0.6em;
+}

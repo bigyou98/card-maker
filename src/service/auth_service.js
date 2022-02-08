@@ -1,34 +1,48 @@
-import { getAuth, signInWithPopup } from "firebase/auth";
-import firebase from "firebase";
+import {
+  getAuth,
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
 
 class AuthService {
-  login(providerName) {
-    // const authProvider = new `${providerName}AuthProvider`();
-    const authProvider = new firebase.auth[`${providerName}AuthProvider`]();
-    const auth = getAuth();
+  constructor() {
+    this.firebaseAuth = getAuth();
+    // this.firebaseAuth = getAuth();
+    this.googleProvider = new GoogleAuthProvider();
+    this.githubProvider = new GithubAuthProvider();
+  }
 
-    return signInWithPopup(auth, authProvider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = `${providerName}AuthProvider`.credentialFromResult(
-          result
-        );
-        const token = credential.accessToken;
-        const user = result.user;
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const email = error.email;
-        const credential = `${providerName}AuthProvider`.credentialFromError(
-          error
-        );
-      });
+  login(providerName) {
+    const authProvider = this.getProvider(providerName);
+
+    return signInWithPopup(this.firebaseAuth, authProvider);
+  }
+
+  logout() {
+    alert("qweqwe");
+    // signOut(this.firebaseAuth)
+    //   .then(() => {
+    //     // Sign-out successful.
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+  }
+
+  onAuthChange() {}
+
+  getProvider(providerName) {
+    switch (providerName) {
+      case "Google":
+        return this.googleProvider;
+      case "Github":
+        return this.githubProvider;
+      default:
+        throw new Error("에러발생!");
+    }
   }
 }
 
-// 로그인 관련 역할을 한다.
-
-// 로그인한 유저 정보
-// const user = auth.currentUser;
-// console.log(user);
+export default AuthService;

@@ -7,4 +7,10 @@ const firebaseConfig = {
   projectId: process.env.REACT_APP_PROJECT_ID,
 };
 
-const app = initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
+
+export default firebaseApp;
+
+// firebaseApp은 API키를 넣어서 초기화한 것이다.
+// 현재 엘리 강의 10.2에서 사용을 했는데 전버전임.
+// 일단 나는 필요가 없음

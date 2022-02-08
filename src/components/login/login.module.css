@@ -4,10 +4,6 @@
 @value makerGreen from '../../common/colors.css';
 @value makerBlack from '../../common/colors.css';
 
-p {
-  margin: 20px;
-}
-
 .wrapper {
   display: flex;
   align-items: center;
@@ -22,8 +18,7 @@ p {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: makerGreen;
-  color: makerWhite;
+  background-color: makerWhite;
 }
 
 .button {
@@ -33,14 +28,13 @@ p {
   margin: 10px 0px;
   background-color: makerWhite;
   cursor: pointer;
+  border: 2px solid makerBlack;
 }
 .button:hover {
   background-color: makerLightPink;
 }
 
 .whiteBack {
-  color: makerBlack;
-  background-color: makerWhite;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,13 +42,4 @@ p {
   padding: 8px;
   font-weight: bold;
   font-size: 2rem;
-}
-
-.title {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.img {
-  margin-top: 20px;
 }
