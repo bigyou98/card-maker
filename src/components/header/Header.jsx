@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 const Header = ({ onLogout }) => {
   const navigation = useNavigate();
-  const handleLogout = () => {
-    onLogout();
+  const handleLogout = async () => {
+    await onLogout();
     navigation("/");
   };
   return (

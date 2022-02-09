@@ -4,6 +4,7 @@ import BusinessCard from "./businessCard/BusinessCard";
 import { ProfileBox, ProfileBoxTemplate } from "components/main/profileBox";
 import Header from "components/header/Header";
 import Footer from "components/footer/Footer";
+import { useParams } from "react-router";
 
 const Main = ({ authService }) => {
   const [profile, setProfile] = useState({
@@ -16,7 +17,8 @@ const Main = ({ authService }) => {
     photo: "",
     userId: "0",
   });
-
+  const params = useParams();
+  console.log(params);
   // const db = getDatabase(app);
 
   // const writeUserData = (

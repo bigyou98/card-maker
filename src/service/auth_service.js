@@ -9,7 +9,6 @@ import {
 class AuthService {
   constructor() {
     this.firebaseAuth = getAuth();
-    // this.firebaseAuth = getAuth();
     this.googleProvider = new GoogleAuthProvider();
     this.githubProvider = new GithubAuthProvider();
   }
@@ -21,14 +20,13 @@ class AuthService {
   }
 
   logout() {
-    alert("qweqwe");
-    // signOut(this.firebaseAuth)
-    //   .then(() => {
-    //     // Sign-out successful.
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    signOut(this.firebaseAuth)
+      .then(() => {
+        console.log("로그아웃됨");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   onAuthChange() {}
