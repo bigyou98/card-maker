@@ -1,21 +1,28 @@
 import Footer from "components/footer/Footer";
 import Header from "components/header/Header";
-import React from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import css from "./login.module.css";
 
 const Login = ({ authService }) => {
   const navigation = useNavigate();
-  const { search, state } = useLocation();
 
   const goToMain = (userId) => {
-    navigation("/main", { sanghun: "쿵쿵쿵" });
+    navigation("/main", { state: { id: userId } });
   };
+
   const onLogin = (e) => {
     authService
       .login(e.target.innerText)
       .then((data) => goToMain(data.user.uid));
   };
+
+  // 로그인이 되었다면 자동으로 메인페이지로 가게끔
+  useEffect(() => {
+    authService.onAuthChange((user) => {
+      user && goToMain(user.id);
+    });
+  });
 
   return (
     <div className={css.wrapper}>

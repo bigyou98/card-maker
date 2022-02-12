@@ -1,17 +1,11 @@
 import React from "react";
 import style from "./header.module.css";
-import { useNavigate } from "react-router-dom";
 
 const Header = ({ onLogout }) => {
-  const navigation = useNavigate();
-  const handleLogout = async () => {
-    await onLogout();
-    navigation("/");
-  };
   return (
     <div className={style.header}>
       {onLogout && (
-        <button onClick={handleLogout} className={style.logout}>
+        <button onClick={onLogout} className={style.logout}>
           Logout
         </button>
       )}

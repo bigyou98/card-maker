@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import css from "./main.module.css";
 import BusinessCard from "./businessCard/BusinessCard";
 import { ProfileBox, ProfileBoxTemplate } from "components/main/profileBox";
 import Header from "components/header/Header";
 import Footer from "components/footer/Footer";
-import { useParams } from "react-router";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Main = ({ authService }) => {
+  const navigation = useNavigate();
+
   const [profile, setProfile] = useState({
     name: "박상훈",
     company: "네이버",
@@ -17,8 +19,19 @@ const Main = ({ authService }) => {
     photo: "",
     userId: "0",
   });
-  const params = useParams();
-  console.log(params);
+  const {
+    state: { id },
+  } = useLocation();
+
+  // 사용자 정보가 없다면 로그인 페이지로
+  useEffect(() => {
+    authService.onAuthChange((user) => {
+      if (!user) {
+        navigation("/");
+      }
+    });
+  });
+
   // const db = getDatabase(app);
 
   // const writeUserData = (
