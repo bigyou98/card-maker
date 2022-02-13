@@ -1,24 +1,15 @@
 import React, { useEffect, useState } from "react";
 import css from "./main.module.css";
-import BusinessCard from "./businessCard/BusinessCard";
-import { ProfileBox, ProfileBoxTemplate } from "components/main/profileBox";
+import BusinessCard from "./preview/BusinessCard";
 import Header from "components/header/Header";
 import Footer from "components/footer/Footer";
 import { useLocation, useNavigate } from "react-router-dom";
+import Editor from "./editor/Editor";
+import Preview from "./preview/Preview";
 
 const Main = ({ authService }) => {
   const navigation = useNavigate();
 
-  const [profile, setProfile] = useState({
-    name: "박상훈",
-    company: "네이버",
-    theme: "dark",
-    title: "학생",
-    email: "bigyou00@gmail.com",
-    message: "'현재는 한세대학교 학생입니다.'",
-    photo: "",
-    userId: "0",
-  });
   const {
     state: { id },
   } = useLocation();
@@ -46,23 +37,11 @@ const Main = ({ authService }) => {
   // ) => {
 
   return (
-    <div className={css.layout}>
-      <Header
-        onLogout={() => {
-          authService.logout();
-        }}
-      />
+    <div className={css.main}>
+      <Header onLogout={() => authService.logout()} />
       <div className={css.wrapper}>
-        <div className={css.halfWrapper}>
-          <p className={css.title}>Card Maker</p>
-          <ProfileBox profile={profile} />
-          <ProfileBoxTemplate writeUserData={() => {}} />
-        </div>
-        <div className={css.halfWrapper}>
-          <p className={css.title}>Card Preview</p>
-          <BusinessCard profile={profile} />
-          <BusinessCard profile={profile} />
-        </div>
+        <Editor />
+        <Preview />
       </div>
       <Footer />
     </div>

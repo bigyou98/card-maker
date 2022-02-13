@@ -11,6 +11,10 @@
   font-style: normal;
 }
 
+.halfWrapper {
+  flex-basis: 50%;
+}
+
 .profileBox {
   display: flex;
   flex-direction: column;
@@ -67,4 +71,10 @@
   font-size: 1rem;
   font-family: SUIT-Medium;
   background-color: makerPink;
+}
+
+.title {
+  font-size: 2rem;
+  color: makerGreen;
+  font-weight: bold;
 }

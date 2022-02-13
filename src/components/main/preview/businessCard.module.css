@@ -1,5 +1,8 @@
-@value makerYellow from '../../../common/colors.css';
+@value makerYellow,makerGreen from '../../../common/colors.css';
 
+.preview {
+  flex-basis: 50%;
+}
 .businessCard {
   display: flex;
   background-color: wheat;
@@ -42,4 +45,10 @@
   height: 1px;
   background-color: makerYellow;
   border: none;
+}
+
+.title {
+  font-size: 2rem;
+  color: makerGreen;
+  font-weight: bold;
 }
