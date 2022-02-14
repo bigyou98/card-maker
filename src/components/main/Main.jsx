@@ -9,7 +9,41 @@ import Preview from "./preview/Preview";
 
 const Main = ({ authService }) => {
   const navigation = useNavigate();
-
+  const [users, setUsers] = useState([
+    {
+      name: "박상훈",
+      company: "네이버",
+      theme: "dark",
+      title: "학생",
+      email: "bigyou00@gmail.com",
+      message: "'현재는 한세대학교 학생입니다.'",
+      fileName: "박상훈 증명사진",
+      fileURL: "sanghun.png",
+      userId: "0",
+    },
+    {
+      name: "박동글",
+      company: "네이버",
+      theme: "light",
+      title: "학생",
+      email: "bigyou00@gmail.com",
+      message: "레츠고",
+      fileName: "상훈쓰",
+      fileURL: null,
+      userId: "1",
+    },
+    {
+      name: "김가영",
+      company: "카페",
+      theme: "pink",
+      title: "메이크업 디자이너",
+      email: "bigyou00@gmail.com",
+      message: "알바중 입니다",
+      fileName: "",
+      fileURL: null,
+      userId: "2",
+    },
+  ]);
   const {
     state: { id },
   } = useLocation();
@@ -23,25 +57,12 @@ const Main = ({ authService }) => {
     });
   });
 
-  // const db = getDatabase(app);
-
-  // const writeUserData = (
-  //   userId,
-  //   name,
-  //   company,
-  //   theme,
-  //   title,
-  //   email,
-  //   message,
-  //   photo
-  // ) => {
-
   return (
     <div className={css.main}>
       <Header onLogout={() => authService.logout()} />
       <div className={css.wrapper}>
-        <Editor />
-        <Preview />
+        <Editor users={users} />
+        <Preview users={users} />
       </div>
       <Footer />
     </div>

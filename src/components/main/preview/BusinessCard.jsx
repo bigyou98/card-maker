@@ -1,13 +1,15 @@
 import React from "react";
 import css from "./businessCard.module.css";
 
-const BusinessCard = ({ profile }) => {
-  const { name, company, theme, title, email, message, photo } = profile;
+const DEFAULT_IMG = "images/default_logo.png";
+const BusinessCard = ({ user }) => {
+  const { name, company, theme, title, email, message, fileName, fileURL } =
+    user;
   return (
-    <div className={css.businessCard}>
+    <div className={`${css.businessCard} ${getThem(theme)}`}>
       <div className={css.imgArea}>
         <img
-          src="images/default_logo.png"
+          src={fileName || DEFAULT_IMG}
           alt="로고이미지"
           className={css.img}
         />
@@ -24,4 +26,16 @@ const BusinessCard = ({ profile }) => {
   );
 };
 
+function getThem(them) {
+  switch (them) {
+    case "dark":
+      return css.dark;
+    case "pink":
+      return css.pink;
+    case "light":
+      return css.light;
+    default:
+      throw new Error(`모르는 테마 : ${them}`);
+  }
+}
 export default BusinessCard;

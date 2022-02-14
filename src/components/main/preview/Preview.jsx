@@ -1,23 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import BusinessCard from "./BusinessCard";
 import css from "./businessCard.module.css";
 
-const Preview = () => {
-  const [profile, setProfile] = useState({
-    name: "박상훈",
-    company: "네이버",
-    theme: "dark",
-    title: "학생",
-    email: "bigyou00@gmail.com",
-    message: "'현재는 한세대학교 학생입니다.'",
-    photo: "",
-    userId: "0",
-  });
+const Preview = ({ users }) => {
   return (
     <div className={css.preview}>
       <p className={css.title}>Card Preview</p>
-      <BusinessCard profile={profile} />
-      <BusinessCard profile={profile} />
+      {users.map((user) => (
+        <BusinessCard user={user} key={user.userId}/>
+      ))}
     </div>
   );
 };

@@ -1,23 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { ProfileBox } from "./ProfileBox";
 import { ProfileBoxTemplate } from "./ProfileBoxTemplate";
 import css from "./profileBox.module.css";
 
-const Editor = () => {
-  const [profile, setProfile] = useState({
-    name: "박상훈",
-    company: "네이버",
-    theme: "dark",
-    title: "학생",
-    email: "bigyou00@gmail.com",
-    message: "'현재는 한세대학교 학생입니다.'",
-    photo: "",
-    userId: "0",
-  });
+const Editor = ({ users }) => {
   return (
     <div className={css.halfWrapper}>
       <p className={css.title}>Card Maker</p>
-      <ProfileBox profile={profile} />
+      {users.map((user) => (
+        <ProfileBox user={user} key={user.userId} />
+      ))}
       <ProfileBoxTemplate />
     </div>
   );

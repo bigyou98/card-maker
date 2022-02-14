@@ -1,8 +1,9 @@
 import React from "react";
 import css from "./profileBox.module.css";
 
-export const ProfileBox = ({ profile }) => {
-  const { name, company, theme, title, email, message, photo } = profile;
+export const ProfileBox = ({ user }) => {
+  const { name, company, theme, title, email, message, fileName, fileURL } =
+    user;
   return (
     <div className={css.profileBox}>
       <div className={css.box}>
@@ -48,12 +49,7 @@ export const ProfileBox = ({ profile }) => {
         <label htmlFor="profilePhoto2" className={`${css.flex1} ${css.label}`}>
           선택된 사진이 있으면 분홍색
         </label>
-        <input
-          id="profilePhoto2"
-          type="file"
-          className={`${css.flex1} ${css.btn1}`}
-          value={photo}
-        ></input>
+        {/* <img className={`${css.flex1} ${css.btn1}`} src={fileURL} /> */}
         <button className={`${css.flex1} ${css.btn2}`}>추가하기</button>
       </div>
     </div>

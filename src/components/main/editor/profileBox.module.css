@@ -13,6 +13,9 @@
 
 .halfWrapper {
   flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .profileBox {
@@ -77,4 +80,5 @@
   font-size: 2rem;
   color: makerGreen;
   font-weight: bold;
+  margin: 1rem 0;
 }
