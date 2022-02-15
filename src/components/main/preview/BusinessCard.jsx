@@ -26,16 +26,16 @@ const BusinessCard = ({ user }) => {
   );
 };
 
-function getThem(them) {
-  switch (them) {
+function getThem(theme) {
+  switch (theme) {
     case "dark":
       return css.dark;
     case "pink":
       return css.pink;
-    case "light":
-      return css.light;
+    case "white":
+      return css.white;
     default:
-      throw new Error(`모르는 테마 : ${them}`);
+      throw new Error(`모르는 테마 : ${theme}`);
   }
 }
 export default BusinessCard;

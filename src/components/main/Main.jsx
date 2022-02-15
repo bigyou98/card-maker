@@ -24,7 +24,7 @@ const Main = ({ authService }) => {
     {
       name: "박동글",
       company: "네이버",
-      theme: "light",
+      theme: "white",
       title: "학생",
       email: "bigyou00@gmail.com",
       message: "레츠고",
@@ -56,12 +56,14 @@ const Main = ({ authService }) => {
       }
     });
   });
-
+  const addCard = (card) => {
+    setUsers((cur) => [...cur, card]);
+  };
   return (
     <div className={css.main}>
       <Header onLogout={() => authService.logout()} />
       <div className={css.wrapper}>
-        <Editor users={users} />
+        <Editor users={users} addCard={addCard} />
         <Preview users={users} />
       </div>
       <Footer />

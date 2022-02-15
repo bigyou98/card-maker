@@ -2,6 +2,8 @@
 @value makerLightGrey from '../../../common/colors.css';
 @value makerGreen from '../../../common/colors.css';
 @value makerPink from '../../../common/colors.css';
+@value makerWhite from '../../../common/colors.css';
+@value makerBlack from '../../../common/colors.css';
 
 @font-face {
   font-family: "SUIT-Medium";
@@ -16,25 +18,31 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-right: 1px solid makerLightGrey;
 }
 
 .profileBox {
   display: flex;
   flex-direction: column;
-  border: 1px solid makerLightGrey;
   width: 90%;
-  margin-bottom: 40px;
+  margin-bottom: 3em;
+  border-top: 1px solid makerBlack;
+  border-left: 1px solid makerBlack;
 }
 
 .box {
   display: flex;
 }
 
-.flex1 {
-  flex: 1;
-  outline: none;
+.input {
+  flex: 1 1 30%;
+  width: 100%;
+  padding: 0.5em;
   font-size: 1rem;
   font-family: SUIT-Medium;
+  border: 0;
+  border-right: 1px solid makerBlack;
+  border-bottom: 1px solid makerBlack;
 }
 
 .message {
@@ -43,6 +51,9 @@
   padding: 10px;
   font-size: 1.1rem;
   font-family: SUIT-Medium;
+  border: 0;
+  border-right: 1px solid makerBlack;
+  border-bottom: 1px solid makerBlack;
 }
 
 .btn1 {
@@ -50,30 +61,16 @@
 }
 .btn2 {
   background-color: makerGreen;
-  height: 30px;
+  color: makerWhite;
   cursor: pointer;
+  font-weight: bold;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  flex: 1 1 50%;
 }
 
-.label {
-  flex: 1;
-  outline: none;
-  font-size: 1rem;
-  font-family: SUIT-Medium;
-  cursor: pointer;
-  text-align: center;
-  background-color: makerLightGrey;
-  height: 30px;
-  border: 1px solid black;
-}
-
-.photo {
-  cursor: pointer;
-  text-align: center;
-  flex: 1;
-  outline: none;
-  font-size: 1rem;
-  font-family: SUIT-Medium;
-  background-color: makerPink;
+.btn2:hover {
+  opacity: 0.8;
 }
 
 .title {
