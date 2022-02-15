@@ -76,7 +76,7 @@ export const ProfileBoxTemplate = ({ addCard }) => {
       />
       <div className={css.box}>
         <ImgFileInput />
-        <Button onClick={onSubmit} />
+        <Button onSubmit={onSubmit} />
       </div>
     </form>
   );

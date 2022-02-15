@@ -3,12 +3,17 @@ import { ProfileBox } from "./ProfileBox";
 import { ProfileBoxTemplate } from "./ProfileBoxTemplate";
 import css from "./profileBox.module.css";
 
-const Editor = ({ users, addCard }) => {
+const Editor = ({ users, addCard, deleteCard, updateCard }) => {
   return (
     <div className={css.halfWrapper}>
       <p className={css.title}>Card Maker</p>
-      {users.map((user) => (
-        <ProfileBox user={user} key={user.userId} />
+      {Object.keys(users).map((key) => (
+        <ProfileBox
+          user={users[key]}
+          key={key}
+          deleteCard={deleteCard}
+          updateCard={updateCard}
+        />
       ))}
       <ProfileBoxTemplate addCard={addCard} />
     </div>

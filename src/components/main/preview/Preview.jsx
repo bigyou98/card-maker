@@ -6,8 +6,8 @@ const Preview = ({ users }) => {
   return (
     <div className={css.preview}>
       <p className={css.title}>Card Preview</p>
-      {users.map((user) => (
-        <BusinessCard user={user} key={user.userId}/>
+      {Object.keys(users).map((key) => (
+        <BusinessCard user={users[key]} key={key} />
       ))}
     </div>
   );
