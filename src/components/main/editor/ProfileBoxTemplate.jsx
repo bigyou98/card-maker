@@ -1,9 +1,8 @@
 import Button from "components/button/Button";
-import ImgFileInput from "components/image_file_input/ImgFileInput";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import css from "./profileBox.module.css";
 
-export const ProfileBoxTemplate = ({ addCard }) => {
+export const ProfileBoxTemplate = ({ FileInput, addCard }) => {
   const formRef = useRef();
   const nameRef = useRef();
   const companyRef = useRef();
@@ -11,6 +10,17 @@ export const ProfileBoxTemplate = ({ addCard }) => {
   const titleRef = useRef();
   const emailRef = useRef();
   const messageRef = useRef();
+  const [file, setFile] = useState({
+    fileName: null,
+    fileURL: null,
+  });
+
+  const onFileChange = (file) => {
+    setFile({
+      fileName: file.name,
+      fileURL: file.url,
+    });
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -22,12 +32,14 @@ export const ProfileBoxTemplate = ({ addCard }) => {
       title: titleRef.current.value || "",
       email: emailRef.current.value || "",
       message: messageRef.current.value || "",
-      fileName: "",
-      fileURL: "",
+      fileName: file.fileName || "",
+      fileURL: file.fileURL || "",
     };
     formRef.current.reset();
     addCard(card);
+    setFile({});
   };
+
   return (
     <form className={css.profileBox} ref={formRef}>
       <div className={css.box}>
@@ -75,7 +87,7 @@ export const ProfileBoxTemplate = ({ addCard }) => {
         name="message"
       />
       <div className={css.box}>
-        <ImgFileInput />
+        <FileInput name={file.fileName} onFileChange={onFileChange} />
         <Button onSubmit={onSubmit} />
       </div>
     </form>

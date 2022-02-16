@@ -3,13 +3,12 @@ import css from "./businessCard.module.css";
 
 const DEFAULT_IMG = "images/default_logo.png";
 const BusinessCard = ({ user }) => {
-  const { name, company, theme, title, email, message, fileName, fileURL } =
-    user;
+  const { name, company, theme, title, email, message, fileURL } = user;
   return (
     <div className={`${css.businessCard} ${getThem(theme)}`}>
       <div className={css.imgArea}>
         <img
-          src={fileName || DEFAULT_IMG}
+          src={fileURL || DEFAULT_IMG}
           alt="로고이미지"
           className={css.img}
         />

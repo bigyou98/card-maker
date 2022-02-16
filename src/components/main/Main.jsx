@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Editor from "./editor/Editor";
 import Preview from "./preview/Preview";
 
-const Main = ({ authService }) => {
+const Main = ({ authService, FileInput }) => {
   const navigation = useNavigate();
   const [users, setUsers] = useState({
     1: {
@@ -73,6 +73,7 @@ const Main = ({ authService }) => {
       <Header onLogout={() => authService.logout()} />
       <div className={css.wrapper}>
         <Editor
+          FileInput={FileInput}
           users={users}
           addCard={createOrUpdateCard}
           deleteCard={deleteCard}

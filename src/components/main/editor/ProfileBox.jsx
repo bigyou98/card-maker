@@ -1,20 +1,10 @@
 import React from "react";
 import css from "./profileBox.module.css";
 import Button from "components/button/Button";
-import ImgFileInput from "components/image_file_input/ImgFileInput";
 
-export const ProfileBox = ({ user, deleteCard, updateCard }) => {
-  const {
-    userId,
-    name,
-    company,
-    theme,
-    title,
-    email,
-    message,
-    fileName,
-    fileURL,
-  } = user;
+export const ProfileBox = ({ FileInput, user, deleteCard, updateCard }) => {
+  const { name, company, theme, title, email, message, fileName, fileURL } =
+    user;
 
   const onChange = (e) => {
     if (e.currentTarget === null) {
@@ -28,6 +18,14 @@ export const ProfileBox = ({ user, deleteCard, updateCard }) => {
   };
   const onDelete = () => {
     deleteCard(user);
+  };
+
+  const onFileChange = (file) => {
+    updateCard({
+      ...user,
+      fileName: file.name,
+      fileURL: file.url,
+    });
   };
   return (
     <div className={css.profileBox}>
@@ -86,7 +84,7 @@ export const ProfileBox = ({ user, deleteCard, updateCard }) => {
         name="message"
       />
       <div className={css.box}>
-        <ImgFileInput name={fileName} />
+        <FileInput name={fileName} onFileChange={onFileChange} />
         <Button name={fileName} deleteCard={onDelete} />
       </div>
     </div>
