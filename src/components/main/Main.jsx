@@ -6,52 +6,33 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Editor from "./editor/Editor";
 import Preview from "./preview/Preview";
 
-const Main = ({ authService, FileInput }) => {
+const Main = ({ authService, FileInput, realTimeDB }) => {
   const navigation = useNavigate();
-  const [users, setUsers] = useState({
-    1: {
-      name: "박상훈",
-      company: "네이버",
-      theme: "dark",
-      title: "학생",
-      email: "bigyou00@gmail.com",
-      message: "'현재는 한세대학교 학생입니다.'",
-      fileName: "박상훈 증명사진",
-      fileURL: "sanghun.png",
-      userId: "1",
-    },
-    2: {
-      name: "박동글",
-      company: "네이버",
-      theme: "white",
-      title: "학생",
-      email: "bigyou00@gmail.com",
-      message: "레츠고",
-      fileName: "상훈쓰",
-      fileURL: null,
-      userId: "2",
-    },
-    3: {
-      name: "김가영",
-      company: "카페",
-      theme: "pink",
-      title: "메이크업 디자이너",
-      email: "bigyou00@gmail.com",
-      message: "알바중 입니다",
-      fileName: "",
-      fileURL: null,
-      userId: "3",
-    },
-  });
+  const location = useLocation();
 
-  // 사용자 정보가 없다면 로그인 페이지로
+  const [userId, setUserId] = useState(location.state && location.state.id);
+
+  const [users, setUsers] = useState({});
+
   useEffect(() => {
     authService.onAuthChange((user) => {
-      if (!user) {
+      if (user) {
+        setUserId(user.uid);
+      } else {
         navigation("/");
       }
     });
   });
+
+  const createOrUpdateCard = (user) => {
+    setUsers((cur) => {
+      const updated = { ...cur };
+      updated[user.userId] = user;
+      return updated;
+    });
+
+    realTimeDB.saveCard(userId, user);
+  };
 
   const deleteCard = (user) => {
     setUsers((cur) => {
@@ -59,13 +40,7 @@ const Main = ({ authService, FileInput }) => {
       delete updated[user.userId];
       return updated;
     });
-  };
-  const createOrUpdateCard = (user) => {
-    setUsers((cur) => {
-      const updated = { ...cur };
-      updated[user.userId] = user;
-      return updated;
-    });
+    realTimeDB.removeCard(userId, user);
   };
 
   return (

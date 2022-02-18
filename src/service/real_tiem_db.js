@@ -1,28 +1,19 @@
 import firebaseApp from "./firebase";
-import { getDatabase, ref, set, onValue } from "firebase/database";
+import { getDatabase, ref, remove, set } from "firebase/database";
 
-class realTimeDB {
+class RealTimeDB {
   constructor() {
     this.db = getDatabase(firebaseApp);
   }
-  // 기본 쓰기 작업
-  writeUserData(userId, name, company, theme, title, email, message, imageUrl) {
-    set(ref(this.db, "users/" + userId), {
-      name,
-      company,
-      theme,
-      title,
-      email,
-      message,
-      imageUrl,
+
+  saveCard(userId, user) {
+    set(ref(this.db, `${userId}/users/${user.userId}`), {
+      user,
     });
   }
-  // 하나의 데이터 읽기
-  readUserData(userId) {
-    const currentRef = ref(this.db, "posts/" + userId);
-
-    onValue(currentRef, (snapshot) => {
-      const data = snapshot.val();
-    });
+  removeCard(userId, user) {
+    remove(ref(this.db, `${userId}/users/${user.userId}`));
   }
 }
+
+export default RealTimeDB;
