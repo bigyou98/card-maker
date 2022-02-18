@@ -13,6 +13,17 @@ const Main = ({ authService, FileInput, realTimeDB }) => {
   const [userId, setUserId] = useState(location.state && location.state.id);
 
   const [users, setUsers] = useState({});
+  useEffect(() => {
+    if (!userId) {
+      return;
+    }
+    const stopSync = realTimeDB.syncCards(userId, (users) => {
+      setUsers(users);
+    });
+
+    // 언마운트 될 때 마무리 함수
+    return () => stopSync();
+  }, [userId]);
 
   useEffect(() => {
     authService.onAuthChange((user) => {

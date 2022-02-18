@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import ReactDOM from "react-dom";
 import "./index.module.css";
 import App from "./app";
@@ -8,14 +8,14 @@ import ImgUploader from "service/img_uploader";
 import RealTimeDB from "service/real_tiem_db";
 import ImgFileInput from "components/image_file_input/ImgFileInput";
 
-// const authService = new AuthService(firebaseApp);
-const authService = new AuthService();
+const authService = new AuthService(firebaseApp);
+const realTimeDB = new RealTimeDB(firebaseApp);
 const imgUploader = new ImgUploader();
-const realTimeDB = new RealTimeDB();
 
-const FileInput = (props) => (
+const FileInput = memo((props) => (
   <ImgFileInput {...props} imgUploader={imgUploader} />
-);
+));
+
 ReactDOM.render(
   <React.StrictMode>
     <App
