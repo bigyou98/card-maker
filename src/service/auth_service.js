@@ -43,7 +43,7 @@ class AuthService {
       case "Github":
         return this.githubProvider;
       default:
-        throw new Error("에러발생!");
+        throw new Error(`에러발생! 지원하지 않는 ${providerName}입니다`);
     }
   }
 }

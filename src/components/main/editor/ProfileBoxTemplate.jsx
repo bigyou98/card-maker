@@ -1,8 +1,8 @@
 import Button from "components/button/Button";
-import React, { useRef, useState } from "react";
+import React, { memo, useRef, useState } from "react";
 import css from "./profileBox.module.css";
 
-export const ProfileBoxTemplate = ({ FileInput, addCard }) => {
+export const ProfileBoxTemplate = memo(({ FileInput, addCard }) => {
   const formRef = useRef();
   const nameRef = useRef();
   const companyRef = useRef();
@@ -49,6 +49,7 @@ export const ProfileBoxTemplate = ({ FileInput, addCard }) => {
           type="text"
           placeholder="Name"
           name="name"
+          maxLength="20"
         />
         <input
           ref={companyRef}
@@ -56,6 +57,7 @@ export const ProfileBoxTemplate = ({ FileInput, addCard }) => {
           type="text"
           placeholder="Company"
           name="company"
+          maxLength="20"
         />
         <select className={css.input} name="theme" ref={themeRef}>
           <option value="dark">dark</option>
@@ -70,6 +72,7 @@ export const ProfileBoxTemplate = ({ FileInput, addCard }) => {
           type="text"
           placeholder="Title"
           name="title"
+          maxLength="20"
         />
         <input
           ref={emailRef}
@@ -77,6 +80,7 @@ export const ProfileBoxTemplate = ({ FileInput, addCard }) => {
           type="text"
           placeholder="Email"
           name="email"
+          maxLength="20"
         />
       </div>
       <textarea
@@ -85,6 +89,7 @@ export const ProfileBoxTemplate = ({ FileInput, addCard }) => {
         placeholder="Message"
         className={css.message}
         name="message"
+        maxLength="100"
       />
       <div className={css.box}>
         <FileInput name={file.fileName} onFileChange={onFileChange} />
@@ -92,4 +97,4 @@ export const ProfileBoxTemplate = ({ FileInput, addCard }) => {
       </div>
     </form>
   );
-};
+});

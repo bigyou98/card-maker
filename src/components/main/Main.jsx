@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import css from "./main.module.css";
 import Header from "components/header/Header";
 import Footer from "components/footer/Footer";
@@ -23,7 +23,7 @@ const Main = ({ authService, FileInput, realTimeDB }) => {
 
     // 언마운트 될 때 마무리 함수
     return () => stopSync();
-  }, [userId]);
+  }, [userId, realTimeDB]);
 
   useEffect(() => {
     authService.onAuthChange((user) => {
@@ -33,30 +33,40 @@ const Main = ({ authService, FileInput, realTimeDB }) => {
         navigation("/");
       }
     });
-  });
+  }, [authService, navigation]);
 
-  const createOrUpdateCard = (user) => {
-    setUsers((cur) => {
-      const updated = { ...cur };
-      updated[user.userId] = user;
-      return updated;
-    });
+  const createOrUpdateCard = useCallback(
+    (user) => {
+      setUsers((cur) => {
+        const updated = { ...cur };
+        updated[user.userId] = user;
+        return updated;
+      });
 
-    realTimeDB.saveCard(userId, user);
-  };
+      realTimeDB.saveCard(userId, user);
+    },
+    [realTimeDB, userId]
+  );
 
-  const deleteCard = (user) => {
-    setUsers((cur) => {
-      const updated = { ...cur };
-      delete updated[user.userId];
-      return updated;
-    });
-    realTimeDB.removeCard(userId, user);
-  };
+  const deleteCard = useCallback(
+    (user) => {
+      setUsers((cur) => {
+        const updated = { ...cur };
+        delete updated[user.userId];
+        return updated;
+      });
+      realTimeDB.removeCard(userId, user);
+    },
+    [realTimeDB, userId]
+  );
+
+  const onLogout = useCallback(() => {
+    authService.logout();
+  }, [authService]);
 
   return (
     <div className={css.main}>
-      <Header onLogout={() => authService.logout()} />
+      <Header onLogout={onLogout} />
       <div className={css.wrapper}>
         <Editor
           FileInput={FileInput}

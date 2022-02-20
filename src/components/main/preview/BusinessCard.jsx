@@ -1,8 +1,9 @@
-import React from "react";
+import React, { memo } from "react";
 import css from "./businessCard.module.css";
 
 const DEFAULT_IMG = "images/default_logo.png";
-const BusinessCard = ({ user }) => {
+
+const BusinessCard = memo(({ user }) => {
   const { name, company, theme, title, email, message, fileURL } = user;
   return (
     <div className={`${css.businessCard} ${getThem(theme)}`}>
@@ -23,7 +24,7 @@ const BusinessCard = ({ user }) => {
       </div>
     </div>
   );
-};
+});
 
 function getThem(theme) {
   switch (theme) {

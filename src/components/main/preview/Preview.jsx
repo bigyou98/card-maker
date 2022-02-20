@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import BusinessCard from "./BusinessCard";
 import css from "./businessCard.module.css";
 
-const Preview = ({ users }) => {
+const Preview = memo(({ users }) => {
   return (
     <div className={css.preview}>
       <p className={css.title}>Card Preview</p>
@@ -11,6 +11,6 @@ const Preview = ({ users }) => {
       ))}
     </div>
   );
-};
+});
 
 export default Preview;
